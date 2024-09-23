@@ -13,7 +13,6 @@ pub(crate) struct BFS {
     pi: Vec<i64>,
     color: Vec<usize>,
     d: Vec<usize>,
-    time: usize,
     graph: GraphMatrix,
     deque: VecDeque<usize>,
 }
@@ -25,7 +24,6 @@ impl BFS {
             pi: vec![i64::MAX; n],
             color: vec![WHITE; n],
             d: vec![0; n],
-            time: 0,
             graph,
             deque: VecDeque::new(),
         }
