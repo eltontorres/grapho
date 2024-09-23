@@ -1,16 +1,16 @@
 use std::collections::{HashMap, HashSet};
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct GraphMatrix {
-    adjacency_matrix: Vec<Vec<usize>>,
+    pub adjacency_matrix: Vec<Vec<usize>>,
     vertices: HashSet<usize>,
-    edges: HashSet<(usize, usize)>,
+    pub edges: HashSet<(usize, usize)>,
 }
 #[derive(Debug)]
 pub struct GraphList {
-    adjacency_list: HashMap<usize, HashSet<usize>>,
+    pub adjacency_list: HashMap<usize, HashSet<usize>>,
     vertices: HashSet<usize>,
-    edges: HashSet<(usize, usize)>,
+    pub edges: HashSet<(usize, usize)>,
 }
 
 impl GraphMatrix {

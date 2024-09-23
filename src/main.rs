@@ -1,17 +1,21 @@
-mod graph;
-use graph::{GraphList, cartesian_graph_list};
+mod bfs;
+mod dfs;
+mod grapho;
+use bfs::BFS;
+use dfs::DFS;
+use grapho::GraphMatrix;
 
 fn main() {
-    let graph1 = GraphList::new()
-        .add_edges(&vec![(1, 2), (2, 3), (3, 4), (4, 1)])
-        .build_no_oriented();
-    let graph2 = GraphList::new()
-        .add_edges(&vec![(1, 4), (2, 6), (3, 2), (3, 1)])
-        .build_no_oriented();
+    let graph1 = GraphMatrix::new()
+        .add_edges(&vec![(0, 1), (1, 2), (2, 3), (3, 4), (4, 5), (5, 0)])
+        .build_oriented();
 
-    print!("Graph 1: {:?}\n", graph1);
-    print!("Graph 2: {:?}\n", graph2);
+    let mut binding = DFS::new(graph1.clone());
+    let dfs = binding.dfs();
+    print!("{:?}\n", dfs);
 
-    let result = cartesian_graph_list(graph1, graph2);
-    print!("Result graph: {:?}\n", result);
+    let mut binding = BFS::new(graph1.clone());
+    let bfs = binding.bfs(0);
+
+    print!("{:?}\n", bfs);
 }
